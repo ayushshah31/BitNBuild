@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const doctorSchema = new Schema(
     {
         name: {
             type: String,
@@ -16,13 +16,21 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-        role: {
+        specialization: {
             type: String,
-            default: 'patient',
+            required: true,
+        },
+        qualification: {
+            type: String,
+            required: true,
+        },
+        location: {
+            type: String,
+            required: true,
         }
     }, {
         timestamps: true,
     }
 );
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Doctor', doctorSchema);
