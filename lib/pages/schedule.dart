@@ -143,7 +143,8 @@ class _ScheduleState extends State<Schedule> {
                 doctorName: 'Dr.Mim Akhter',
                 doctype: 'Cardiologist',
                 image1: 'lib/images/doc1.png',
-                time: 1200,
+                time: "12:00",
+                onpress: (){},
               ),
             ],
           )

@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 
 class ScheduleCard extends StatelessWidget {
   final String doctorName;
-  final int time;
+  final String? time;
   final Color color1;
   final String image1;
   final String doctype;
+  final Function() onpress;
 
   ScheduleCard({
     required this.doctorName,
     required this.color1,
-    required this.time,
+    this.time,
     required this.image1,
     required this.doctype,
+    required this.onpress
   });
 
   @override
@@ -23,7 +25,7 @@ class ScheduleCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 350,
+            width: 325,
             height: 120,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
@@ -51,14 +53,15 @@ class ScheduleCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      time != null ?
                       Text(
-                        time.toString(),
+                        time!,
                         style: TextStyle(
                             color: Colors.white70,
                             fontSize: 14,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w200),
-                      ),
+                      ) : Text(""),
                       Text(
                         doctorName,
                         style: TextStyle(
@@ -77,19 +80,12 @@ class ScheduleCard extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 12.0, top: 10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('lib/images/Vector2.png'))),
-                      ),
-                    ],
-                  ),
+                  padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      color: Colors.blue,
+                      onPressed: onpress,
+                      child: Text("Meet")),
                 )
               ],
             ),

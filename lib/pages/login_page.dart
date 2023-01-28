@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                                         color: Color(0xFF8F9BB3),
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w300),
-                                    hintText: 'vinit45shah@gmail.com',
+                                    hintText: 'example@email.com',
                                     hintStyle: TextStyle(
                                       fontSize: 16,
                                       color: Color(0xFF8F9BB3),
