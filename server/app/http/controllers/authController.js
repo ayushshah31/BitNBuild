@@ -1,5 +1,6 @@
 const User = require('../../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const authController = () => {
     return {
@@ -16,7 +17,7 @@ const authController = () => {
                 if(!isMatch) return res.status(300).json({ message: 'Invalid credentials.' })
         
                 // Generate JWT Token
-                const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+                const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET);
                 delete user.password;
         
                 return res.status(200).json({ token, user });
@@ -39,7 +40,7 @@ const authController = () => {
                 const hashedPassword = await bcrypt.hash(password, salt);
 
                 // Create User
-                const user = new User({
+                const newUser = new User({
                     name,
                     email,
                     password: hashedPassword,

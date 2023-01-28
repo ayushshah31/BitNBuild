@@ -1,17 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../state/authSlice';
 import authImgMain from "../images/AuthImageMain.svg";
-import authbottom from "../images/AuthBottom.svg"
-import clouds from "../images/Clouds.svg"
-import injection from "../images/Injection.svg"
-import plus from "../images/PlusSignsMirror.svg"
+import authbottom from "../images/AuthBottom.svg";
+import clouds from "../images/Clouds.svg";
+import injection from "../images/Injection.svg";
+import plus from "../images/PlusSignsMirror.svg";
 
 const DoctorLogin = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    let navigate = useNavigate()
-    const getIn = () => {
-        navigate('/')
-    }  
+  const loginUser = async (e) => {
+    e.preventDefault();
+    // const loginForm = e.target;
+
+    // let formData = new FormData(loginForm);
+    // let formObj = {};
+
+    // for(let [key, value] of formData.entries()) {
+    //   formObj[key] = value;
+    // }
+
+    const formObj = {
+      email,
+      password,
+    }
+
+    if(formObj.email === '' || formObj.password === '') {
+      console.log({ message: 'Please fill all the credentials'});
+      return;
+    }
+
+    try {
+      const loggedIn = await axios.post("http://localhost:3001/auth/login", formObj, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+      
+      if(loggedIn) {
+        dispatch(
+          setLogin({
+            user: loggedIn.data.user,
+            token: loggedIn.data.token,
+          })
+        )
+        navigate('/test');
+      }
+
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="h-screen formClass overflow-y-hidden">
@@ -32,20 +76,20 @@ const DoctorLogin = () => {
                 <br/>
                 <form className="w-full max-w-sm mt-5">
                 <p className="font-medium">Email</p>
-                  <div className="flex items-center border-b-2 border-ourmedpurp ">
+                  <div onChange={(e) => { setEmail(e.target.value) }} className="flex items-center border-b-2 border-ourmedpurp ">
                     <input className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="text" placeholder="Enter your email address" name = "email" />                      
                   </div>
                   {/* <div className="text-[12px] text-red-600">{used}</div> */}
                 <p className="font-medium mt-5">Password</p>
                   <div className="flex items-center border-b-2 border-ourmedpurp ">
-                    <input className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="password" placeholder="Enter your password" name="password"/>                      
+                    <input onChange={(e) => { setPassword(e.target.value) }} className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="password" placeholder="Enter your password" name="password"/>                      
                   </div>
-                <p className="font-medium mt-5">Number</p>
+                {/* <p className="font-medium mt-5">Number</p>
                   <div className="flex items-center border-b-2 border-ourmedpurp ">
                     <input className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="tel" placeholder="Enter your phone number" name="phone"/>                      
-                  </div>
+                  </div> */}
                   <div className="content-center justify-center mt-11 ml-8">
-                    <button className="flex-shrink-0 bg-gradient-to-r from-btn-left to-btn-right text-sm text-white py-3 px-6 rounded-3xl w-11/12 font-medium" type="button" onClick={getIn}>
+                    <button type="submit" onClick={(e) => { loginUser(e) }} className="flex-shrink-0 bg-gradient-to-r from-btn-left to-btn-right text-sm text-white py-3 px-6 rounded-3xl w-11/12 font-medium">
                     Sign In</button>
                   </div>
                 </form> 
