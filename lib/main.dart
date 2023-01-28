@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health_app/pages/doctor_user.dart';
 // ignore: unused_import
 import 'package:health_app/pages/login_page.dart';
 import 'package:health_app/pages/schedule.dart';
@@ -32,6 +33,6 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: Schedule())));
+            home: DoctorUser())));
   }
 }
