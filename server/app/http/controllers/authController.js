@@ -1,4 +1,4 @@
-const User = require('../../models/user');
+const Patient = require('../../models/patient');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -8,19 +8,20 @@ const authController = () => {
             const { email, password } = req.body;
 
             try {
-                // Check User
-                const user = await User.findOne({ email });
-                if(!user) return res.status(400).json({ message: 'User does not exist.' });
+                // Check Patient
+                const patient = await Patient.findOne({ email });
+                if(!patient) return res.status(400).json({ message: 'Patient does not exist.' });
         
                 // Check Password Match
-                const isMatch = await bcrypt.compare(password, user.password);
+                const isMatch = await bcrypt.compare(password, patient.password);
                 if(!isMatch) return res.status(300).json({ message: 'Invalid credentials.' })
         
                 // Generate JWT Token
-                const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-                delete user.password;
+                const token = jwt.sign({ id: patient._id }, process.env.JWT_SECRET);
+                delete patient.password;
+                console.log(token);
         
-                return res.status(200).json({ token, user });
+                return res.status(200).json({ token, user: patient });
             } catch (error) {
                 return res.status(500).json({ error: error.message });
             }
@@ -30,7 +31,7 @@ const authController = () => {
 
             try {
                 // Check if email exists
-                const checkEmail = await User.exists({ email: email });
+                const checkEmail = await Patient.exists({ email: email });
                 if(checkEmail) {
                     return res.status(409).json({ message: 'Email already taken!'});
                 }
@@ -39,15 +40,15 @@ const authController = () => {
                 const salt = await bcrypt.genSalt();
                 const hashedPassword = await bcrypt.hash(password, salt);
 
-                // Create User
-                const newUser = new User({
+                // Create Patient
+                const newPatient = new Patient({
                     name,
                     email,
                     password: hashedPassword,
                 });
 
-                const savedUser = await newUser.save();
-                return res.status(201).json(savedUser);
+                const savedPatient = await newPatient.save();
+                return res.status(201).json(savedPatient);
             } catch (error) {
                 return res.status(500).json({ error: error.message });
             }
