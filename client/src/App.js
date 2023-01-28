@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './pages/Authentication/Login';
 import Register from './pages/Authentication/Register';
+import DoctorLogin from "./pages/Doctors/DoctorsLogin";
 import Landing from './pages/Landing/Landing';
 import VideoRoom from './pages/Consult/VideoRoom'
 import DoctorCard from "./pages/Consult/DoctorCard";
@@ -22,6 +23,7 @@ function App() {
        <Route path="/" element={<Landing />} />
        <Route path="/patient/login" element={<Login />} />
        <Route path="/patient/register" element={<Register />} />
+       <Route path="/doctor/login" element={<DoctorLogin />} />
        <Route path="/room" element={<VideoRoom />} />
        <Route path="/doctors" element={<AllDoctors />} />
        <Route path="/doctor" element={<DoctorCard />} />

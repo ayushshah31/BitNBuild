@@ -1,4 +1,4 @@
-const Patient = require('../../models/patient');
+const Patient = require('../../../models/patient');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
