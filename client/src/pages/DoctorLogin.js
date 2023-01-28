@@ -10,7 +10,7 @@ const DoctorLogin = () => {
 
     let navigate = useNavigate()
     const getIn = () => {
-        navigate('/about')
+        navigate('/')
     }  
 
   return (
