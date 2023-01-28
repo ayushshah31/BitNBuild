@@ -19,7 +19,6 @@ const authController = () => {
                 // Generate JWT Token
                 const token = jwt.sign({ id: patient._id }, process.env.JWT_SECRET);
                 delete patient.password;
-                console.log(token);
         
                 return res.status(200).json({ token, user: patient });
             } catch (error) {

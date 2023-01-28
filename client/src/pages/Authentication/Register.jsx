@@ -27,10 +27,10 @@ const PatientRegister = () => {
     }
 
     try {
-      const savedUser = await axios.post("http://localhost:3001/auth/register", formObj);
+      const savedUser = await axios.post("http://localhost:3001/auth/patient/register", formObj);
 
       if(savedUser) {
-        navigate('/login');
+        navigate('/patient/login');
       }
 
       window.location.reload();
