@@ -40,7 +40,7 @@ const DoctorLogin = () => {
             token: loggedIn.data.token,
           })
         )
-        navigate('/dashboard');
+        navigate('/doctorLogs');
       }
 
       window.location.reload();
