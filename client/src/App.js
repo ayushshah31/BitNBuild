@@ -12,8 +12,13 @@ function App() {
        <Route path="/" element={<Landing />} />
        <Route path="/login" element={<Login />} />
        <Route path="/register" element={<Register />} />
-       <Route path="/about" element={<About/>} />
        <Route path="/room" element={<VideoRoom />} />
+       <Route path="/consult" element={<VideoRoom />} />
+       <Route path="/book-lab-test" element={<VideoRoom />} />
+       <Route path="/find-medicine" element={<VideoRoom />} />
+       <Route path="/take-survey" element={<VideoRoom />} />
+       <Route path="/buy-products" element={<VideoRoom />} />
+       <Route path="/articles" element={<VideoRoom />} />
      </Routes>
    </BrowserRouter>
   )
