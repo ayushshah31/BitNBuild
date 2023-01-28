@@ -29,7 +29,7 @@ const DoctorLogin = () => {
     }
 
     try {
-      const loggedIn = await axios.post("http://localhost:3001/auth/login", formObj, {
+      const loggedIn = await axios.post("http://localhost:3001/auth/patient/login", formObj, {
         headers: { 'Content-Type': 'application/json' }
       });
       

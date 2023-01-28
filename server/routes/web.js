@@ -7,8 +7,8 @@ const verifyToken = require("../app/http/middlewares/auth");
 
 const initRoutes = (app) => {
     // Authentication
-    app.post('/auth/login', authController().postLogin);
-    app.post('/auth/register', authController().postRegister);
+    app.post('/auth/patient/login', authController().postLogin);
+    app.post('/auth/patient/register', authController().postRegister);
     app.get('/fetch-doctors', doctorController().fetchDoctors);
 }
 

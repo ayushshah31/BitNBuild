@@ -19,10 +19,8 @@ export default function Navbar() {
                         <div className="flex items-center lg:order-2">
                             <button onClick={() => { 
                                 dispatch(setLogout());
-                                setTimeout(() => {
-                                    window.location.reload(); 
-                                }, 500);
-                            }} 
+                                navigate('/patient/login');
+                            }}
                             className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5">
                                 Log Out
                             </button>
@@ -30,8 +28,8 @@ export default function Navbar() {
                     )}
                     { !user && (
                         <div className="flex items-center lg:order-2">
-                            <button onClick={() => navigate('/login')} className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5">Log In</button>
-                            <button onClick={() => navigate('/register')} className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5">Sign Up</button>
+                            <button onClick={() => navigate('/patient/login')} className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5">Log In</button>
+                            <button onClick={() => navigate('/patient/register')} className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5">Sign Up</button>
                         </div>
                     )}
                     <div className="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
