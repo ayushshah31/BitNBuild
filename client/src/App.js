@@ -1,27 +1,22 @@
-// import './App.css';
-import {BrowserRouter, Routes, Route } from "react-router-dom"
-import About from './pages/About';
-import Home from './pages/landing/Home';
-import DoctorLogin from './pages/DoctorLogin';
-import PatientRegister from './pages/PatientRegister';
-import TestLanding from './pages/landing/TestLanding';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import About from './pages/About/About';
+import Login from './pages/Authentication/Login';
+import Register from './pages/Authentication/Register';
+import Landing from './pages/Landing/Landing';
 import VideoRoom from './pages/Consult/VideoRoom'
 
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
+      <Routes>
+       <Route path="/" element={<Landing />} />
+       <Route path="/login" element={<Login />} />
+       <Route path="/register" element={<Register />} />
        <Route path="/about" element={<About/>} />
-       <Route path="/" element={<Home />} />
-       <Route path="/login" element={<DoctorLogin />} />
-       <Route path="/register" element={<PatientRegister />} />
-       <Route path="/test" element={<TestLanding />} />
        <Route path="/room" element={<VideoRoom />} />
      </Routes>
    </BrowserRouter>
-
-
-          )
+  )
 }
 
 export default App;

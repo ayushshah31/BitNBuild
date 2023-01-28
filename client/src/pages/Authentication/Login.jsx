@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from 'react-redux';
-import { setLogin } from '../state/authSlice';
-import authImgMain from "../images/AuthImageMain.svg";
-import authbottom from "../images/AuthBottom.svg";
-import clouds from "../images/Clouds.svg";
-import injection from "../images/Injection.svg";
-import plus from "../images/PlusSignsMirror.svg";
+import { setLogin } from '../../state/authSlice';
+import authImgMain from "../../images/AuthImageMain.svg";
+import authbottom from "../../images/AuthBottom.svg";
+import clouds from "../../images/Clouds.svg";
+import injection from "../../images/Injection.svg";
+import plus from "../../images/PlusSignsMirror.svg";
 
 const DoctorLogin = () => {
   const dispatch = useDispatch();
@@ -17,14 +17,6 @@ const DoctorLogin = () => {
 
   const loginUser = async (e) => {
     e.preventDefault();
-    // const loginForm = e.target;
-
-    // let formData = new FormData(loginForm);
-    // let formObj = {};
-
-    // for(let [key, value] of formData.entries()) {
-    //   formObj[key] = value;
-    // }
 
     const formObj = {
       email,
@@ -48,7 +40,7 @@ const DoctorLogin = () => {
             token: loggedIn.data.token,
           })
         )
-        navigate('/test');
+        navigate('/');
       }
 
       window.location.reload();

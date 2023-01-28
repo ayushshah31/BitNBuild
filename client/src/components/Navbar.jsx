@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setLogout } from '../../state/authSlice';
+import { setLogout } from '../state/authSlice';
 
 export default function Navbar() {
     const dispatch = useDispatch();
@@ -17,7 +17,15 @@ export default function Navbar() {
                     </a>
                     { user && (
                         <div className="flex items-center lg:order-2">
-                            <button onClick={() => dispatch(setLogout())} className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5">Log Out</button>
+                            <button onClick={() => { 
+                                dispatch(setLogout());
+                                setTimeout(() => {
+                                    window.location.reload(); 
+                                }, 500);
+                            }} 
+                            className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5">
+                                Log Out
+                            </button>
                         </div>
                     )}
                     { !user && (

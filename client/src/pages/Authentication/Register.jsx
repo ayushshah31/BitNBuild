@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import authImgMain from "../images/AuthImageMain.svg";
-import authbottom from "../images/AuthBottom.svg";
-import clouds from "../images/Clouds.svg";
-import injection from "../images/Injection.svg";
-import plus from "../images/PlusSignsMirror.svg";
+import authImgMain from "../../images/AuthImageMain.svg";
+import authbottom from "../../images/AuthBottom.svg";
+import clouds from "../../images/Clouds.svg";
+import injection from "../../images/Injection.svg";
+import plus from "../../images/PlusSignsMirror.svg";
 
 const PatientRegister = () => {
   const navigate = useNavigate();
