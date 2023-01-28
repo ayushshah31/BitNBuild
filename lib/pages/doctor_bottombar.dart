@@ -41,6 +41,7 @@ class _DoctorBottomBarState extends State<DoctorBottomBar> {
       child: Scaffold(
         body: mainTabs[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.indigo,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.calendar_today),

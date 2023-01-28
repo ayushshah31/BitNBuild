@@ -69,10 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Positioned(
                   top: 225,
-                  left: 30,
+                  left: 20,
                   child: Container(
-                    height: 460,
-                    width: 350,
+                    height: 450,
+                    width: 320,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Color(0xFFFFFFFF),
@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
                           Container(
                             width: 300,
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                                 )),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
                           Container(
                             width: 300,
@@ -172,13 +172,13 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           SizedBox(
-                            height: 40,
+                            height: 20,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 20.0),
                             child: Container(
                               height: 60,
-                              width: 300,
+                              width: 280,
                               child: Center(
                                 child: TextButton(
                                     onPressed: () async{

@@ -47,7 +47,7 @@ class _GetStartedState extends State<GetStarted> {
               child: Container(
                   padding: EdgeInsets.only(left: 10),
                   height: 380,
-                  width: 400,
+                  width: 360,
                   decoration: BoxDecoration(
                       // color: Colors.cyan,
                       image: DecorationImage(
@@ -64,7 +64,7 @@ class _GetStartedState extends State<GetStarted> {
         Center(
           child: Container(
             height: 60,
-            width: 360,
+            width: 320,
             child: Center(
               child: TextButton(
                   onPressed: () {

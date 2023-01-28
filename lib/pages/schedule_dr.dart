@@ -34,57 +34,65 @@ class _ScheduleState extends State<Schedule> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 70,
-              width: 500,
-              child: ListView.builder(
-                itemCount: 7,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context,i){
-                    return Container(
-                      // height: 30,
-                      width: 50,
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.lightBlueAccent
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(8),
-                        child: Text((i+29).toString()),
-                      ),
-                    );
-                  }
-              )
-          ),
-          SizedBox(height: 20),
-          Text("Appointments"),
-          FutureBuilder<DataRequiredForBuild>(
-            future: _dataRequiredForBuild,
-              builder: (context,snapshot){
-              print(snapshot.data!.appointments);
-                return Container(
-                  height: 100,
-                  child: ListView.builder(
-                    itemCount: snapshot.data!.appointments.length,
-                      itemBuilder: (context,i){
-                        return Column(
-                          children: [
-                            Text(snapshot.data!.appointments[i]["time"].toString()),
-                            Text(snapshot.data!.appointments[i]["name"].toString()),
-                          ],
-                        );
-                      }
-                  ),
-                );
-              }
-          )
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 70,
+                width: 500,
+                child: ListView.builder(
+                  itemCount: 7,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context,i){
+                      return Container(
+                        // height: 30,
+                        width: 50,
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.lightBlueAccent
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Text((i+29).toString()),
+                        ),
+                      );
+                    }
+                )
+            ),
+            SizedBox(height: 20),
+            Text("Appointments"),
+            FutureBuilder<DataRequiredForBuild>(
+              future: _dataRequiredForBuild,
+                builder: (context,snapshot){
+                print(snapshot.data!.appointments);
+                if(snapshot.hasData) {
+                  return Container(
+                    height: 100,
+                    child: ListView.builder(
+                        itemCount: snapshot.data!.appointments.length,
+                        itemBuilder: (context, i) {
+                          return Column(
+                            children: [
+                              Text(snapshot.data!.appointments[i]["time"]
+                                  .toString()),
+                              Text(snapshot.data!.appointments[i]["name"]
+                                  .toString()),
+                            ],
+                          );
+                        }
+                    ),
+                  );
+                } else {
+                  return CircularProgressIndicator(color: Colors.deepPurple,backgroundColor: Colors.indigoAccent,);
+                }
+                }
+            )
+          ],
+        ),
       ),
     );
   }
