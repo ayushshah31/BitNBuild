@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../data/firebaseFetch.dart';
 import '../widgets/date_card.dart';
 import '../widgets/schedule_card.dart';
 
@@ -10,7 +13,31 @@ class Schedule extends StatefulWidget {
   State<Schedule> createState() => _ScheduleState();
 }
 
+class DataRequiredForBuild {
+  List appointments;
+  DataRequiredForBuild({required this.appointments});
+}
+
 class _ScheduleState extends State<Schedule> {
+
+  late Future<DataRequiredForBuild> _dataRequiredForBuild;
+
+  Future<DataRequiredForBuild> _fetchData() async{
+    User? mFirebaseUser=FirebaseAuth.instance.currentUser;
+    // print(mFirebaseUser!.displayName);
+    final username = mFirebaseUser!.email.toString().split("@")[0];
+    FirebaseFetch _fetchData = FirebaseFetch();
+    final appt = (await _fetchData.getUserAppointment(username));
+    return DataRequiredForBuild(appointments: appt);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _dataRequiredForBuild = _fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,39 +142,48 @@ class _ScheduleState extends State<Schedule> {
           SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Row(
-              children: [
-                Text('12.00pm'),
-                for (int i = 0; i < 99; i++)
-                  i.isEven
-                      ? Container(
-                          width: 3,
-                          height: 1,
-                          decoration: BoxDecoration(
-                              color: Color(0xFF839fed),
-                              borderRadius: BorderRadius.circular(8)),
-                        )
-                      : Container(height: 1, width: 3, color: Colors.white)
-              ],
-            ),
+          FutureBuilder<DataRequiredForBuild>(
+            future: _dataRequiredForBuild,
+              builder: (context,snapshot){
+                return snapshot.hasData? Container(
+                  height: 475,
+                  child: ListView.builder(
+                    itemCount: snapshot.data!.appointments.length,
+                      itemBuilder: (context,i){
+                        return  Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                              child: Row(
+                                children: [
+                                  Text('${snapshot.data!.appointments[i]['time']}.00pm '),
+                                  Text(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",style: TextStyle(color: Color(0xFF839fed)),)
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            ScheduleCard(
+                              color1: Color(0xFF1C6BA4),
+                              doctorName: "Dr.${snapshot.data!.appointments[i]['name']}",
+                              doctype: 'Cardiologist',
+                              image1: 'lib/images/doc1.png',
+                              time: "12:00",
+                              onpress: () async{
+                                String url = "https://meet.jit.si/MathematicalDiversitiesTranslateInstead";
+                                Uri uri = Uri.parse(url);
+                                await launchUrl(uri, mode: LaunchMode.externalApplication);
+                              },
+                            ),
+                            SizedBox(height: 10),
+                          ],
+                        );
+                      }
+                  ),
+                ): CircularProgressIndicator();
+              }
           ),
-          SizedBox(
-            height: 20,
-          ),
-          Column(
-            children: [
-              ScheduleCard(
-                color1: Color(0xFF1C6BA4),
-                doctorName: 'Dr.Mim Akhter',
-                doctype: 'Cardiologist',
-                image1: 'lib/images/doc1.png',
-                time: "12:00",
-                onpress: (){},
-              ),
-            ],
-          )
         ],
       )),
     );

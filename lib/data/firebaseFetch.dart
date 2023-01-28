@@ -21,4 +21,20 @@ class FirebaseFetch{
     print(appointments['accepted']);
     return appointments;
   }
+
+  Future getUserAppointment(String user) async{
+    print("Function get called");
+    late final appointments;
+    try {
+      appointments = (await databaseRef.child("users")
+          .child(user)
+          .child("appointments")
+          .once()).snapshot.value;
+    } catch(e){
+      print(e);
+    }
+    print(appointments.runtimeType);
+    print("appt: " + appointments.toString());
+    return appointments;
+  }
 }

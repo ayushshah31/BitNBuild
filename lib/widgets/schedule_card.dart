@@ -32,6 +32,7 @@ class ScheduleCard extends StatelessWidget {
               color: color1,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 5.0),
@@ -42,9 +43,6 @@ class ScheduleCard extends StatelessWidget {
                         image: DecorationImage(image: AssetImage(image1)),
                         borderRadius: BorderRadius.circular(30)),
                   ),
-                ),
-                SizedBox(
-                  width: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -79,8 +77,10 @@ class ScheduleCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                Container(
+                  height: 30,
+                  margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  // padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
                   child: MaterialButton(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                       color: Colors.blue,

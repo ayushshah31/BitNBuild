@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_app/data/firebaseFetch.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:health_app/pages/meet.dart';
 import '../widgets/date_card.dart';
 import '../widgets/schedule_card.dart';
 import 'package:http/http.dart' as http;
@@ -186,9 +187,10 @@ class _ScheduleState extends State<Schedule> {
                                       ScheduleCard(
                                         onpress: () async{
                                             print("Hello");
-                                            String url = "https://whereby.com/health-at-home";
+                                            // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Meet()));
+                                            String url = "https://meet.jit.si/MathematicalDiversitiesTranslateInstead";
                                             Uri uri = Uri.parse(url);
-                                            await launchUrl(uri,mode: LaunchMode.externalApplication);
+                                            await launchUrl(uri, mode: LaunchMode.externalApplication);
                                           },
                                         color1: Color(0xFF1C6BA4),
                                         doctorName: snapshot.data!.appointments[i]['name'].toString().toUpperCase(),
