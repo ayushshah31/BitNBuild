@@ -6,6 +6,7 @@ const BookLabTest = () => {
     <div>
       <Navbar />
       BookLabTest
+
     </div>
   )
 }

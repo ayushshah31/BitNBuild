@@ -4,7 +4,7 @@ import Register from './pages/Authentication/Register';
 import Landing from './pages/Landing/Landing';
 import VideoRoom from './pages/Consult/VideoRoom'
 import DoctorCard from "./pages/Consult/DoctorCard";
-// import Consult from './pages/Consult/Consult';
+import Consult from './pages/Consult/Consult';
 import BookLabTest from './pages/BookLabTest/BookLabTest';
 import FindMedicine from './pages/FindMedicine/FindMedicine';
 import TakeSurvey from './pages/TakeSurvey/TakeSurvey';
@@ -19,8 +19,8 @@ function App() {
        <Route path="/login" element={<Login />} />
        <Route path="/register" element={<Register />} />
        <Route path="/room" element={<VideoRoom />} />
-       <Route path="/consult" element={<DoctorCard />} />
-       {/* <Route path="/consult" element={<Consult />} /> */}
+       <Route path="/doctors" element={<DoctorCard />} />
+       <Route path="/consult" element={<Consult />} />
        <Route path="/book-lab-test" element={<BookLabTest />} />
        <Route path="/find-medicine" element={<FindMedicine />} />
        <Route path="/take-survey" element={<TakeSurvey />} />

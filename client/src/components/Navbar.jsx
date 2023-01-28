@@ -8,7 +8,7 @@ export default function Navbar() {
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
     return (
-        <nav className="font-ourfont">
+        <nav className="font-ourfont mb-14">
             <header className="fixed w-full">
             <nav className=" border-gray-200 py-2.5 bg-gray-900">
                 <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
