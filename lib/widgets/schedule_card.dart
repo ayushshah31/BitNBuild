@@ -1,36 +1,30 @@
-// ignore: unused_import
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
-class DoctorCard extends StatelessWidget {
-  final int date;
+class ScheduleCard extends StatelessWidget {
   final String doctorName;
-  final String day;
   final int time;
   final Color color1;
-  final Color color2;
-  final String disease;
+  final String image1;
+  final String doctype;
 
-  DoctorCard(
-      {required this.doctorName,
-      required this.color1,
-      required this.date,
-      required this.day,
-      required this.time,
-      required this.color2,
-      required this.disease});
+  ScheduleCard({
+    required this.doctorName,
+    required this.color1,
+    required this.time,
+    required this.image1,
+    required this.doctype,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 17.0),
+      padding: const EdgeInsets.only(left: 20.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 300,
-            height: 130,
+            width: 350,
+            height: 120,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
               color: color1,
@@ -38,33 +32,13 @@ class DoctorCard extends StatelessWidget {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 25.0),
+                  padding: const EdgeInsets.only(left: 5.0),
                   child: Container(
                     width: 80,
                     height: 100,
                     decoration: BoxDecoration(
-                        color: color2, borderRadius: BorderRadius.circular(30)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            date.toString(),
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Text(day,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w400))
-                        ],
-                      ),
-                    ),
+                        image: DecorationImage(image: AssetImage(image1)),
+                        borderRadius: BorderRadius.circular(30)),
                   ),
                 ),
                 SizedBox(
@@ -93,7 +67,7 @@ class DoctorCard extends StatelessWidget {
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w600),
                       ),
-                      Text(disease,
+                      Text(doctype,
                           style: TextStyle(
                               color: Colors.white60,
                               fontSize: 12,

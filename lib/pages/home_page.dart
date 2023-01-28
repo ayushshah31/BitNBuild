@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-import 'doctor_card.dart';
+import '../widgets/doctor_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -323,12 +323,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                     DoctorCard(
                       color1: Color(0xFFFAF0DB),
-                      time: 0930,
                       day: 'Tue',
                       color2: Color(0xFFFFFFFF),
                       date: 14,
                       disease: 'Depression',
                       doctorName: 'Dr.Mim Akhter',
+                      time: 1200,
                     ),
 
                     // horizontal listview -> categories:doctors,surgeons,dentists
