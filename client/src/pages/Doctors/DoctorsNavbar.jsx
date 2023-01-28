@@ -7,6 +7,7 @@ export default function DoctorsNavbar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
+
     return (
         <nav className="font-ourfont mb-14">
             <header className="fixed w-full">
@@ -19,7 +20,7 @@ export default function DoctorsNavbar() {
                         <div className="flex items-center lg:order-2">
                             <button onClick={() => { 
                                 dispatch(setLogout());
-                                navigate('/patient/login');
+                                navigate('/doctor/login');
                             }}
                             className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5">
                                 Log Out
