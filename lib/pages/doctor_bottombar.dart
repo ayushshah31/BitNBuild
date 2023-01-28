@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:health_app/pages/bookings.dart';
-import 'package:health_app/pages/prescription.dart';
-import 'package:health_app/pages/profile.dart';
-import 'package:health_app/pages/schedule.dart';
+import 'package:health_app/pages/bookings_dr.dart';
+import 'package:health_app/pages/prescription_dr.dart';
+import 'package:health_app/pages/profile_dr.dart';
+import 'package:health_app/pages/schedule_dr.dart';
 
 class DoctorBottomBar extends StatefulWidget {
   DoctorBottomBar({Key? key}) : super(key: key);
