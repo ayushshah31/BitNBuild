@@ -10,6 +10,7 @@ import FindMedicine from './pages/FindMedicine/FindMedicine';
 import TakeSurvey from './pages/TakeSurvey/TakeSurvey';
 import BuyProducts from './pages/BuyProducts/BuyProducts';
 import Articles from './pages/Articles/Articles';
+import AllDoctors from "./pages/Consult/AllDoctors";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
        <Route path="/login" element={<Login />} />
        <Route path="/register" element={<Register />} />
        <Route path="/room" element={<VideoRoom />} />
-       <Route path="/doctors" element={<DoctorCard />} />
+       <Route path="/doctors" element={<AllDoctors />} />
+       <Route path="/doctor" element={<DoctorCard />} />
        <Route path="/consult" element={<Consult />} />
        <Route path="/book-lab-test" element={<BookLabTest />} />
        <Route path="/find-medicine" element={<FindMedicine />} />
