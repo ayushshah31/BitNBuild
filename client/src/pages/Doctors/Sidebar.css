@@ -1,0 +1,9 @@
+.sidebarhover:hover{
+    background: linear-gradient(90deg, black 55.23%, #2F374B 100%);
+    cursor: pointer;
+}
+
+.logout:hover{
+    cursor: pointer;
+    background: linear-gradient(90deg, black 55.23%, #2F374B 100%);
+}

@@ -11,6 +11,9 @@ import TakeSurvey from './pages/TakeSurvey/TakeSurvey';
 import BuyProducts from './pages/BuyProducts/BuyProducts';
 import Articles from './pages/Articles/Articles';
 import AllDoctors from "./pages/Consult/AllDoctors";
+import DoctorsSidebar from "./pages/Doctors/DoctorsSidebar";
+import DoctorsCalendar from "./pages/Doctors/DoctorsCalendar";
+import DoctorsLogs from "./pages/Doctors/DoctorsLogs";
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
        <Route path="/take-survey" element={<TakeSurvey />} />
        <Route path="/buy-products" element={<BuyProducts />} />
        <Route path="/articles" element={<Articles />} />
+       <Route path="/dashboard" element={<DoctorsSidebar />} />
+       <Route path="/doctorcalendar" element={<DoctorsCalendar />} />
+       <Route path="/doctorlogs" element={<DoctorsLogs />} />
      </Routes>
    </BrowserRouter>
   )
