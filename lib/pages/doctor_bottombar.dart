@@ -31,8 +31,8 @@ class _DoctorBottomBarState extends State<DoctorBottomBar> with SingleTickerProv
     mainTabs = [
       Schedule(),
       Bookings(),
-      Prescription(),
-      Profile()
+      Pres(),
+      ProfileDr()
     ];
   }
 
