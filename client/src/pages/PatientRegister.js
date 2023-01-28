@@ -1,17 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import authImgMain from "../images/AuthImageMain.svg";
-import authbottom from "../images/AuthBottom.svg"
-import clouds from "../images/Clouds.svg"
-import injection from "../images/Injection.svg"
-import plus from "../images/PlusSignsMirror.svg"
+import authbottom from "../images/AuthBottom.svg";
+import clouds from "../images/Clouds.svg";
+import injection from "../images/Injection.svg";
+import plus from "../images/PlusSignsMirror.svg";
 
 const PatientRegister = () => {
+  const navigate = useNavigate();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+  const registerUser = async (e) => {
+    e.preventDefault();
+    const formObj = {
+      name,
+      email,
+      password,
+    }
 
-    let navigate = useNavigate()
-    const getIn = () => {
-        navigate('/about')
-    }  
+    if(formObj.name === '' || formObj.email === '' || formObj.password === '') {
+      console.log({ message: 'Please fill all the credentials'});
+      return;
+    }
+
+    try {
+      const savedUser = await axios.post("http://localhost:3001/auth/register", formObj);
+
+      if(savedUser) {
+        navigate('/login');
+      }
+
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="h-screen formClass overflow-y-hidden">
@@ -31,25 +57,29 @@ const PatientRegister = () => {
                 {/* <button onClick={handleClick} className="font-ourfont font-normal text-sm text-ourmedpurp">{ifnot}</button>} */}
                 <br/>
                 <form className="w-full max-w-sm mt-5">
-                <p className="font-medium">Email</p>
+                <p className="font-medium">Name</p>
                   <div className="flex items-center border-b-2 border-ourmedpurp ">
-                    <input className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="text" placeholder="Enter your email address" name = "email" />                      
+                    <input onChange={(e) => { setName(e.target.value) }} className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="text" placeholder="Enter your name" name = "name" />                      
+                  </div>
+                <p className="font-medium mt-5">Email</p>
+                  <div className="flex items-center border-b-2 border-ourmedpurp ">
+                    <input onChange={(e) => { setEmail(e.target.value) }} className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="text" placeholder="Enter your email address" name = "email" />                      
                   </div>
                   {/* <div className="text-[12px] text-red-600">{used}</div> */}
                 <p className="font-medium mt-5">Password</p>
                   <div className="flex items-center border-b-2 border-ourmedpurp ">
-                    <input className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="password" placeholder="Enter your password" name="password"/>                      
+                    <input onChange={(e) => { setPassword(e.target.value) }} className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="password" placeholder="Enter your password" name="password"/>                      
                   </div>
-                <p className="font-medium mt-5">Confirm Password</p>
+                {/* <p className="font-medium mt-5">Confirm Password</p>
                   <div className="flex items-center border-b-2 border-ourmedpurp ">
                     <input className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="password" placeholder="Enter your password" name="password"/>                      
                   </div>
                 <p className="font-medium mt-5">Number</p>
                   <div className="flex items-center border-b-2 border-ourmedpurp ">
                     <input className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none" type="tel" placeholder="Enter your phone number" name="phone"/>                      
-                  </div>
+                  </div> */}
                   <div className="content-center justify-center mt-11 ml-8">
-                    <button className="flex-shrink-0 bg-gradient-to-r from-btn-left to-btn-right text-base text-white py-3 px-6 rounded-3xl w-11/12 font-medium" type="button" onClick={getIn}>
+                    <button type="submit" onClick={(e) => { registerUser(e) }} className="flex-shrink-0 bg-gradient-to-r from-btn-left to-btn-right text-base text-white py-3 px-6 rounded-3xl w-11/12 font-medium">
                     Create Account</button>
                   </div>
                 </form> 
