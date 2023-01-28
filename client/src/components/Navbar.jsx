@@ -40,7 +40,7 @@ export default function Navbar() {
                                 <a href="/#" className="block py-2 pl-3 pr-4 text-white hover:text-customLight">Home</a>
                             </li>
                             <li>
-                                <a href="/#" className="block py-2 pl-3 pr-4 text-white hover:text-customLight">Consult</a>
+                                <a href="/consult" className="block py-2 pl-3 pr-4 text-white hover:text-customLight">Consult</a>
                             </li>
                             <li>
                                 <a href="/#" className="block py-2 pl-3 pr-4 text-white hover:text-customLight">Book Lab Test</a>

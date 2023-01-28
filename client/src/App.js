@@ -4,6 +4,7 @@ import Login from './pages/Authentication/Login';
 import Register from './pages/Authentication/Register';
 import Landing from './pages/Landing/Landing';
 import VideoRoom from './pages/Consult/VideoRoom'
+import DoctorCard from "./pages/Consult/DoctorCard";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
        <Route path="/register" element={<Register />} />
        <Route path="/about" element={<About/>} />
        <Route path="/room" element={<VideoRoom />} />
+       <Route path="/consult" element={<DoctorCard />} />
      </Routes>
    </BrowserRouter>
   )
