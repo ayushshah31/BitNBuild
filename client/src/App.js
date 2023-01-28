@@ -5,6 +5,7 @@ import Home from './pages/landing/Home';
 import DoctorLogin from './pages/DoctorLogin';
 import PatientRegister from './pages/PatientRegister';
 import TestLanding from './pages/landing/TestLanding';
+import VideoRoom from './pages/Consult/VideoRoom'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
        <Route path="/login" element={<DoctorLogin />} />
        <Route path="/register" element={<PatientRegister />} />
        <Route path="/test" element={<TestLanding />} />
+       <Route path="/room" element={<VideoRoom />} />
      </Routes>
    </BrowserRouter>
 
