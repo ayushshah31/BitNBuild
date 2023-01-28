@@ -17,7 +17,7 @@ const authController = () => {
                 if(!isMatch) return res.status(300).json({ message: 'Invalid credentials.' })
         
                 // Generate JWT Token
-                const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET);
+                const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
                 delete user.password;
         
                 return res.status(200).json({ token, user });

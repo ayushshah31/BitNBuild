@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../../components/Navbar';
 
 const BookLabTest = () => {
   return (
-    <div>BookLabTest</div>
+    <div>
+      <Navbar />
+      BookLabTest
+    </div>
   )
 }
 
