@@ -43,9 +43,9 @@ export default function Navbar() {
                             <li>
                                 <a href="/find-medicine" className="block py-2 pl-3 pr-4 text-white hover:text-customLight">Find Medicine</a>
                             </li>
-                            <li>
+                            {/* <li>
                                 <a href="/take-survey" className="block py-2 pl-3 pr-4 text-white hover:text-customLight">Take Survey</a>
-                            </li>
+                            </li> */}
                             <li>
                                 <a href="/buy-products" className="block py-2 pl-3 pr-4 text-white hover:text-customLight">Buy Products</a>
                             </li>

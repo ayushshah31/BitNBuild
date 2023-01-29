@@ -10,31 +10,34 @@ const DoctorsCalendar = () => {
     if(e.target.attributes.class.nodeValue === "e-work-cells e-current-date e-selected-cell") {
       navigate('/room');
     }
-    // if(e.target.attributes)
   }
   const appointments = useSelector((state) => state.appointments);
   // const [counter, setCounter] = useState;
   let counter = 0;
-  const appoint = appointments.map((appointment) => {
-    counter++;
-    const date = appointment.date.split('-');
-    const startTime = appointment.startTime.split(':');
-    const endTime = appointment.endTime.split(':');
-    const year = date[0];
-    const month = date[1];
-    const day = date[2];
-    const startTimeHour = startTime[0];
-    const startTimeMinute = startTime[1];
-    const endTimeHour = endTime[0];
-    const endTimeMinute = endTime[1];
-    return {
-      Id: counter,
-      Subject: 'XYZ',
-      EndTime: new Date(year, 0, day, startTimeHour, startTimeMinute),
-      StartTime: new Date(year, 0, day, endTimeHour, endTimeMinute),
-    }
-  });
-  console.log(appoint);
+  let appoint = [];
+  if(appointments) {
+    appoint = appointments.map((appointment) => {
+      counter++;
+      const date = appointment.date.split('-');
+      const startTime = appointment.startTime;
+      const endTime = appointment.endTime;
+      const year = date[0];
+      const month = date[1];
+      const day = date[2];
+      // const startTimeHour = startTime[0];
+      // const startTimeMinute = startTime[1];
+      // const endTimeHour = endTime[0];
+      // const endTimeMinute = endTime[1]
+      console.log(startTime, endTime)
+      return {
+        Id: counter,
+        Subject: 'XYZ',
+        // EndTime: new Date(year, 0, day, startTimeHour, startTimeMinute),
+        // StartTime: new Date(year, 0, day, endTimeHour, endTimeMinute),
+      }
+    });
+    console.log(appoint);
+  }
 
   return (
     <div>
