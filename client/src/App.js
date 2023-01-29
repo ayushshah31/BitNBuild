@@ -15,6 +15,7 @@ import AllDoctors from "./pages/Consult/AllDoctors";
 import DoctorsSidebar from "./pages/Doctors/DoctorsSidebar";
 import DoctorsCalendar from "./pages/Doctors/DoctorsCalendar";
 import DoctorsLogs from "./pages/Doctors/DoctorsLogs";
+import Ocr from "./pages/Consult/OCR";
 
 function App() {
   return (
@@ -24,15 +25,19 @@ function App() {
        <Route path="/patient/login" element={<Login />} />
        <Route path="/patient/register" element={<Register />} />
        <Route path="/doctor/login" element={<DoctorLogin />} />
-       <Route path="/room" element={<VideoRoom />} />
+
+       <Route path="/consult" element={<Consult />} />
        <Route path="/doctors" element={<AllDoctors />} />
        <Route path="/doctor" element={<DoctorCard />} />
-       <Route path="/consult" element={<Consult />} />
+       <Route path="/room" element={<VideoRoom />} />       
+       <Route path="/prescription" element={<Ocr />} />       
+
        <Route path="/book-lab-test" element={<BookLabTest />} />
        <Route path="/find-medicine" element={<FindMedicine />} />
        <Route path="/take-survey" element={<TakeSurvey />} />
        <Route path="/buy-products" element={<BuyProducts />} />
        <Route path="/articles" element={<Articles />} />
+
        <Route path="/dashboard" element={<DoctorsSidebar />} />
        <Route path="/doctorcalendar" element={<DoctorsCalendar />} />
        <Route path="/doctorlogs" element={<DoctorsLogs />} />

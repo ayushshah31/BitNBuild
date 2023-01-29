@@ -49,13 +49,13 @@ const FindMedicine = () => {
   return (
     <div>
       <Navbar />
-      <div className='mt-2'>
-        <input type="text" onChange={(e) => { setMedicine(e.target.value) }} />
-        <button type='button' onClick={ getMedicineData }>Submit</button>
+      <div className='mt-2 flex justify-center'>
+        <input type="text" onChange={(e) => { setMedicine(e.target.value) }} className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none"/>
+        <button type='button' onClick={ getMedicineData } className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5 border-b-customDark">Submit</button>
       </div>
 
       { data ? (
-        <div>
+        <div className='text-base font-semibold bg-gray-800 text-white mx-auto p-6 w-2/5 rounded-md '>
           Name: {data.name} <br />
           Generic Name: {data.genericName} <br />
           Manufacturer Name: {data.manufacturerName} <br />
@@ -71,7 +71,6 @@ const FindMedicine = () => {
         </div>
       ) : (
         <div>
-          Hello
         </div>
       )}
     </div>

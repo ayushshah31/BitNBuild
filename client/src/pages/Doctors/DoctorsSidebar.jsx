@@ -1,15 +1,9 @@
 import React from "react";
 import "./Sidebar.css";
 import { useNavigate, Link } from "react-router-dom";
-import { IconContext } from "react-icons";
-// import {GrLogout} from 'react-icons/gr'
-import { HiLogout } from "react-icons/hi";
 import {
   AiOutlineFundProjectionScreen,
-  AiOutlineProject,
 } from "react-icons/ai";
-import { BsQuestionSquareFill, BsFillQuestionCircleFill } from "react-icons/bs";
-import { RiQuestionAnswerFill } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import DoctorsNavbar from "./DoctorsNavbar";
 

@@ -79,7 +79,7 @@ const Consult = () => {
               <div className="hfull w-2/3 mx-5 px-7 py-5">
                 <div className="shadow-ourshad rounded-md">
                   <a
-                    href="/doctors"
+                    href="/prescription"
                     class="flex flex-col items-center rounded-lg shadow md:flex-row md:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
                   >
                     <img
