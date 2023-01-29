@@ -21,6 +21,8 @@ class _LoginPageState extends State<LoginPage> {
   String pass = "";
   List<String> doctors = [
     'ayushtest@gmail.com',
+    'ayush@doctor.com',
+    "banner@doctor.com",
     'vinittest@gmail.com'
   ];
 
