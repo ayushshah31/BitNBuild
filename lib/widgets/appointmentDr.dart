@@ -100,11 +100,70 @@ class _AppointmentDrState extends State<AppointmentDr> {
                                   // print('confirm $date');
                                   print(date.hour);
                                   print(widget.doctorName);
-                                  var getLength = (await databaseRef.child("doctors").child(widget.doctorName).child("appointments").child("accepted").once()).snapshot.value as List;
-                                  print(getLength.length);
-                                  await databaseRef.child("doctors").child(widget.doctorName).child("appointments").child("accepted").child(getLength.length.toString()).child("name").set(widget.name);
-                                  await databaseRef.child("doctors").child(widget.doctorName).child("appointments").child("accepted").child(getLength.length.toString()).child("date").set(date.day);
-                                  await databaseRef.child("doctors").child(widget.doctorName).child("appointments").child("accepted").child(getLength.length.toString()).child("time").set("${date.hour}");
+                                  try {
+                                    var getLength = (await databaseRef.child(
+                                        "doctors").child(widget.doctorName)
+                                        .child("appointments").child("accepted")
+                                        .once()).snapshot.value as List;
+                                    print(getLength.length);
+                                    await databaseRef.child("doctors").child(
+                                        widget.doctorName).child("appointments")
+                                        .child("accepted").child(
+                                        getLength.length.toString()).child(
+                                        "name")
+                                        .set(widget.name);
+                                    await databaseRef.child("doctors").child(
+                                        widget.doctorName).child("appointments")
+                                        .child("accepted").child(
+                                        getLength.length.toString()).child(
+                                        "date")
+                                        .set(date.day);
+                                    await databaseRef.child("doctors").child(
+                                        widget.doctorName).child("appointments")
+                                        .child("accepted").child(
+                                        getLength.length.toString()).child(
+                                        "time")
+                                        .set("${date.hour}");
+                                  } catch(e){
+                                    await databaseRef.child("doctors").child(
+                                        widget.doctorName).child("appointments")
+                                        .child("accepted").child("0").child(
+                                        "name")
+                                        .set(widget.name);
+                                    await databaseRef.child("doctors").child(
+                                        widget.doctorName).child("appointments")
+                                        .child("accepted").child("0").child(
+                                        "date")
+                                        .set(date.day);
+                                    await databaseRef.child("doctors").child(
+                                        widget.doctorName).child("appointments")
+                                        .child("accepted").child("0").child(
+                                        "time")
+                                        .set("${date.hour}");
+                                  }
+                                  try {
+                                    var len = (await databaseRef.child("users")
+                                        .child(widget.name).child(
+                                        "appointments")
+                                        .once()).snapshot.value as List;
+                                    await databaseRef.child("users").child(
+                                        widget.name).child("appointments")
+                                        .child(len.length.toString()).child("name")
+                                        .set(widget.doctorName);
+                                    await databaseRef.child("users").child(
+                                        widget.name).child("appointments")
+                                        .child(len.length.toString()).child("time")
+                                        .set(date.hour);
+                                  } catch(e){
+                                    await databaseRef.child("users").child(
+                                        widget.name).child("appointments")
+                                        .child("0").child("name")
+                                        .set(widget.doctorName);
+                                    await databaseRef.child("users").child(
+                                        widget.name).child("appointments")
+                                        .child("0").child("time")
+                                        .set(date.hour);
+                                  }
                                   print(widget.index);
                                   await databaseRef.child("doctors").child(widget.doctorName).child("appointments").child("pending").child(widget.index.toString()).remove();
                                   // widget.onPress();
