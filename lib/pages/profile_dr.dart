@@ -67,7 +67,7 @@ class _ProfileDrState extends State<ProfileDr> {
                 height: 15,
               ),
               Text(
-                'App Developer',
+                'Cardiologist',
                 style: TextStyle(
                     fontSize: 14,
                     fontFamily: 'Poppins',
@@ -82,7 +82,7 @@ class _ProfileDrState extends State<ProfileDr> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: 350,
+                          width: 320,
                           height: 80,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -121,7 +121,7 @@ class _ProfileDrState extends State<ProfileDr> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: 350,
+                          width: 320,
                           height: 80,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -160,7 +160,7 @@ class _ProfileDrState extends State<ProfileDr> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: 350,
+                          width: 320,
                           height: 80,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),

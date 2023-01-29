@@ -160,7 +160,7 @@ class _BookingsState extends State<Bookings> {
                       ? Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 20),
+                              padding: EdgeInsets.only(left: 10),
                               height: 480,
                               child: ListView.builder(
                                   itemCount: snapshot.data!.pendingAppt.length,
@@ -170,10 +170,9 @@ class _BookingsState extends State<Bookings> {
                                           showCard: true,
                                           doctorName: docName.toString(),
                                           color1: Color(0xFF1C6BA4),
-                                          name: snapshot
-                                              .data!.pendingAppt[i]['name']
-                                              .toString()
-                                              .toUpperCase(),
+                                          name: snapshot.data!.pendingAppt[i]
+                                                  ['name'] ??
+                                              "ayush".toString().toUpperCase(),
                                           image1: 'lib/images/doc1.png',
                                           // time: snapshot.data!.appointments[i]['time'].toString(),
                                           index: i,
@@ -190,7 +189,7 @@ class _BookingsState extends State<Bookings> {
                           ],
                         )
                       : Padding(
-                          padding: EdgeInsets.all(100),
+                          padding: EdgeInsets.all(80),
                           child: CircularProgressIndicator(
                             color: Colors.blue,
                             backgroundColor: Colors.green,

@@ -83,7 +83,7 @@ class _ProfileState extends State<Profile> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: 350,
+                          width: 320,
                           height: 80,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -122,14 +122,14 @@ class _ProfileState extends State<Profile> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: 350,
+                          width: 320,
                           height: 80,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: Color(0xFFFFFFFF),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.only(left: 10.0),
+                            padding: EdgeInsets.only(left: 5.0),
                             child: Row(
                               children: [
                                 Icon(
@@ -156,12 +156,12 @@ class _ProfileState extends State<Profile> {
                 height: 20,
               ),
               Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 5),
                   child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: 350,
+                          width: 320,
                           height: 80,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),

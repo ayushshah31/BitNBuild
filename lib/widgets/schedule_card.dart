@@ -19,12 +19,12 @@ class ScheduleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20.0),
+      padding: const EdgeInsets.only(left: 10.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 350,
+            width: 340,
             height: 120,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),

@@ -37,7 +37,7 @@ class _AppointmentDrState extends State<AppointmentDr> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: 325,
+                  width: 315,
                   height: 120,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
