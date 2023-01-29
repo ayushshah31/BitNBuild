@@ -18,7 +18,7 @@ const initRoutes = (app) => {
 
     app.get('/appointment/:id', appointmentController().index);
 
-    app.post('/appointment/:id/:appointmentId/:status', appointmentController().update);
+    app.post('/appointment/:appointmentId/:status', appointmentController().update);
 }
 
 module.exports = initRoutes;

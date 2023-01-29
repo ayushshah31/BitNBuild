@@ -39,6 +39,7 @@ const AllDoctors = () => {
                 location={doctor.location}
                 qualification={doctor.qualification}
                 specialization={doctor.specialization}
+                doctor={doctor}
               />
             );
           })}

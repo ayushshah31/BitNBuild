@@ -28,7 +28,9 @@ const appointmentController = () => {
                     sort: {
                         createdAt: -1
                     }
-                });
+                }).populate('patientId', '-password').populate('doctorId', '-password'); ;
+
+
 
                 res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 
@@ -38,16 +40,21 @@ const appointmentController = () => {
             }
         },
         async update(req, res) {
-            const { id, appointmentId, status } = req.params;
+            const { appointmentId, status } = req.params;
+            const { id, startTime, endTime, date } = req.body;
+            console.log(req.body)
 
             try {
                 const updatedAppointment = await Appointment.updateOne({ doctorId: id, _id: appointmentId }, {
                     $set: {
                         status,
+                        startTime,
+                        endTime,
+                        date
                     }
                 });
 
-                return res.status(204).json({ message: 'Success!' })
+                return res.status(204).json(updatedAppointment);
             } catch (error) {
                 return res.status(500).json({ error: error.message });
             }
