@@ -31,7 +31,7 @@ class _ReportProfileState extends State<ReportProfile> {
           elevation: 0,
         ),
         body: Padding(
-          padding: const EdgeInsets.only(left: 25.0, right: 25),
+          padding: const EdgeInsets.only(left: 15.0, right: 25),
           child: Column(
             children: [
               SizedBox(
@@ -43,7 +43,7 @@ class _ReportProfileState extends State<ReportProfile> {
                   height: 200,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      left: 25.0,
+                      left: 20.0,
                     ),
                     child: Row(
                       children: [
@@ -107,7 +107,7 @@ class _ReportProfileState extends State<ReportProfile> {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 21.0),
+                padding: const EdgeInsets.only(left: 5.0),
                 child: Row(
                   children: [
                     Container(
@@ -261,7 +261,7 @@ class _ReportProfileState extends State<ReportProfile> {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 18.0),
+                padding: const EdgeInsets.only(left: 9.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -276,7 +276,7 @@ class _ReportProfileState extends State<ReportProfile> {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 0.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -350,7 +350,7 @@ class _ReportProfileState extends State<ReportProfile> {
                 height: 15,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 0.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

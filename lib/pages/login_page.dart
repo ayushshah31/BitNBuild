@@ -14,7 +14,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   final _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String email = "";
@@ -26,13 +25,12 @@ class _LoginPageState extends State<LoginPage> {
     'vinittest@gmail.com'
   ];
 
-  bool checkDoctor(String email){
-    if(doctors.contains(email)){
+  bool checkDoctor(String email) {
+    if (doctors.contains(email)) {
       return true;
     }
     return false;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -112,8 +110,10 @@ class _LoginPageState extends State<LoginPage> {
                                   left: 20,
                                 ),
                                 child: TextFormField(
-                                  validator: (val)=> val!.isEmail? null:'Enter a valid email' ,
-                                  onChanged: (val) => email=val,
+                                  validator: (val) => val!.isEmail
+                                      ? null
+                                      : 'Enter a valid email',
+                                  onChanged: (val) => email = val,
                                   decoration: InputDecoration(
                                     labelText: 'Email Address',
                                     labelStyle: TextStyle(
@@ -141,8 +141,10 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 child: TextFormField(
                                   obscureText: true,
-                                  validator: (val)=> val!.length<6? "Minimum 6 chars":null ,
-                                  onChanged: (val)=> pass=val,
+                                  validator: (val) => val!.length < 6
+                                      ? "Minimum 6 chars"
+                                      : null,
+                                  onChanged: (val) => pass = val,
                                   decoration: InputDecoration(
                                     labelText: 'Password',
                                     labelStyle: TextStyle(
@@ -167,10 +169,10 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               'Forgot Password?',
                               style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 17,
                                   color: color.AppColor.gradientFirst,
                                   fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600),
+                                  fontWeight: FontWeight.w500),
                             ),
                           ),
                           SizedBox(
@@ -183,12 +185,15 @@ class _LoginPageState extends State<LoginPage> {
                               width: 280,
                               child: Center(
                                 child: TextButton(
-                                    onPressed: () async{
-                                      if(_formKey.currentState!.validate()){
-                                        final result = await _auth.signInWithEmailPassword(email, pass);
+                                    onPressed: () async {
+                                      if (_formKey.currentState!.validate()) {
+                                        final result =
+                                            await _auth.signInWithEmailPassword(
+                                                email, pass);
                                         // print(result!.email);
-                                        if(result != null) {
-                                          String emailid = result.email.toString();
+                                        if (result != null) {
+                                          String emailid =
+                                              result.email.toString();
                                           if (checkDoctor(emailid)) {
                                             Get.to(() => DoctorBottomBar());
                                           } else {
@@ -200,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Text(
                                       'Login',
                                       style: TextStyle(
-                                        fontSize: 24,
+                                        fontSize: 21,
                                         color: Colors.white,
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w600,
@@ -210,8 +215,10 @@ class _LoginPageState extends State<LoginPage> {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                     colors: [
-                                      color.AppColor.gradientFirst.withOpacity(.9),
-                                      color.AppColor.gradientSecond.withOpacity(1),
+                                      color.AppColor.gradientFirst
+                                          .withOpacity(.9),
+                                      color.AppColor.gradientSecond
+                                          .withOpacity(1),
                                     ],
                                     begin: Alignment.bottomLeft,
                                     end: Alignment.bottomRight),
@@ -220,8 +227,8 @@ class _LoginPageState extends State<LoginPage> {
                                   BoxShadow(
                                     offset: Offset(10, 10),
                                     blurRadius: 12,
-                                    color:
-                                        color.AppColor.gradientSecond.withOpacity(.1),
+                                    color: color.AppColor.gradientSecond
+                                        .withOpacity(.1),
                                   ),
                                 ],
                               ),
@@ -243,7 +250,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               'Create Account',
                               style: TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 20,
                                   color: color.AppColor.gradientFirst,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600),
@@ -266,8 +273,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Positioned(
                     right: 0,
-                    top: 180,
-                    left: 160,
+                    top: 160,
+                    left: 150,
                     child: Container(
                       height: 150,
                       width: 180,
@@ -276,7 +283,7 @@ class _LoginPageState extends State<LoginPage> {
                               image: AssetImage(
                                 'lib/images/Injection.png',
                               ),
-                              fit: BoxFit.fitHeight)),
+                              fit: BoxFit.fitWidth)),
                     ))
               ],
             ),
