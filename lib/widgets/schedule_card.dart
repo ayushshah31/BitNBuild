@@ -8,14 +8,13 @@ class ScheduleCard extends StatelessWidget {
   final String doctype;
   final Function() onpress;
 
-  ScheduleCard({
-    required this.doctorName,
-    required this.color1,
-    this.time,
-    required this.image1,
-    required this.doctype,
-    required this.onpress
-  });
+  ScheduleCard(
+      {required this.doctorName,
+      required this.color1,
+      this.time,
+      required this.image1,
+      required this.doctype,
+      required this.onpress});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class ScheduleCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 325,
+            width: 350,
             height: 120,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
@@ -40,7 +39,8 @@ class ScheduleCard extends StatelessWidget {
                     width: 80,
                     height: 100,
                     decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage(image1)),
+                        image: DecorationImage(
+                            image: AssetImage(image1), fit: BoxFit.fitHeight),
                         borderRadius: BorderRadius.circular(30)),
                   ),
                 ),
@@ -51,22 +51,29 @@ class ScheduleCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      time != null ?
-                      Text(
-                        time!,
-                        style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w200),
-                      ) : Text(""),
+                      time != null
+                          ? Text(
+                              time!,
+                              style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w200),
+                            )
+                          : Text(
+                              "Patient :",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Poppins,',
+                                  fontSize: 16),
+                            ),
                       Text(
                         doctorName,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 19,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w500),
                       ),
                       Text(doctype,
                           style: TextStyle(
@@ -78,15 +85,24 @@ class ScheduleCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 30,
-                  margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  // padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
-                  child: MaterialButton(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      color: Colors.blue,
+                    height: 30,
+                    margin: EdgeInsets.fromLTRB(35, 0, 0, 80),
+                    // padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
+                    child: IconButton(
                       onPressed: onpress,
-                      child: Text("Meet")),
-                )
+                      icon: Icon(
+                        Icons.video_call,
+                        color: Colors.white,
+                      ),
+                      iconSize: 50,
+                    )
+                    // MaterialButton(
+                    //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    //     color: Colors.blue,
+                    //     onPressed: onpress,
+                    //     child: Text("Meet")),
+
+                    )
               ],
             ),
           ),
