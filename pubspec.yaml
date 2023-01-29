@@ -43,6 +43,7 @@ dependencies:
   mnc_identifier_ocr: ^1.0.16
   image_picker: ^0.8.6+1
   google_ml_kit: ^0.13.0
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:

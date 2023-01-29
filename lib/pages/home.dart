@@ -1,12 +1,42 @@
+// import 'package:alan_voice/alan_voice.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:health_app/pages/article.dart';
 import 'package:health_app/pages/doctor_user.dart';
-
+import 'package:health_app/pages/medicine.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:io' show Platform;
 import '../widgets/doctor_card.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   String name = FirebaseAuth.instance.currentUser!.email!.split("@")[0];
+  _showToast({required String text}) {
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.redAccent,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //   AlanVoice.addButton(
+    //       "8e0b083e795c924d64635bba9c3571f42e956eca572e1d8b807a3e2338fdd0dc/stage",
+    //       buttonAlign: AlanVoice.BUTTON_ALIGN_LEFT);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -104,50 +134,85 @@ class Home extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 5),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> DoctorUser()));
-                      },
-                      child: Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                            color: Color(0xFFDCEDF9),
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                                image: AssetImage('lib/images/Doctor Icon.png'))),
-                      ),
-                    ),
-                    Container(
-                      height: 70,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          color: Color(0xFFFAF0DB),
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                              image: AssetImage('lib/images/pills.png'))),
-                    ),
-                    Container(
-                      height: 70,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          color: Color(0xFFD6F6FF),
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                              image: AssetImage('lib/images/reports.png'))),
-                    ),
-                    Container(
-                      height: 70,
-                      width: 70,
-                      decoration: BoxDecoration(
-                          color: Color(0xFFF2E3E9),
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                              image: AssetImage('lib/images/vaccine.png'))),
-                    )
-                  ]),
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> DoctorUser()));
+                          },
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                                color: Color(0xFFDCEDF9),
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage('lib/images/Doctor Icon.png'))),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> FindMedicine()));
+                          },
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                                color: Color(0xFFFAF0DB),
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage('lib/images/pills.png'))),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> FindArticle()));
+                          },
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                                color: Color(0xFFD6F6FF),
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage('lib/images/reports.png'))),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){
+                            penWhatsapp({required BuildContext context}) async {
+
+                              String whatsapp = '+919969102238';
+                              String whatsappURlAndroid = "whatsapp://send?phone=$whatsapp&text=hello";
+                              String whatsappURLIos =
+                                  "https://wa.me/$whatsapp?text=${Uri.parse("hello")}";
+                              if (Platform.isIOS) {
+                                if (await canLaunchUrl(Uri.parse(whatsappURLIos))) {
+                                  await launchUrl(Uri.parse(whatsappURLIos));
+                                } else {
+                                  _showToast(text: "whatsapp no installed");
+                                }
+                              } else {
+                                if (await canLaunchUrl(Uri.parse(whatsappURlAndroid))) {
+                                  await launchUrl(Uri.parse(whatsappURlAndroid));
+                                } else {
+                                  _showToast(text: "whatsapp no installed");
+                                }
+                              }
+                            }
+                            // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ChatBot()));
+                          },
+                          child: Container(
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                                color: Color(0xFFF2E3E9),
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage('lib/images/vaccine.png'))),
+                          ),
+                        )
+                      ]),
                 ),
                 SizedBox(
                   height: 30,
