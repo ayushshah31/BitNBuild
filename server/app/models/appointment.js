@@ -14,15 +14,15 @@ const appointmentSchema = new Schema(
             required: true,
         },
         startTime: {
-            type: Date,
+            type: String,
             default: null
         },
         endTime: {
-            type: Date,
+            type: String,
             default: null
         },
         date: {
-            type: Date,
+            type: String,
             default: null
         },
         status: {
