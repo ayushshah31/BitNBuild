@@ -47,15 +47,17 @@ const FindMedicine = () => {
   }
 
   return (
-    <div>
+    <div className='bg-gray-700 h-screen'>
       <Navbar />
       <div className='mt-2 flex justify-center'>
-        <input type="text" onChange={(e) => { setMedicine(e.target.value) }} className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none"/>
-        <button type='button' onClick={ getMedicineData } className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg text-sm px-4 py-2 mx-5 border-b-customDark">Submit</button>
+      <div className="flex items-center border-b-4 border-ourmedpurp my-20 bg-white p-5 rounded-lg">
+        <input type="text" placeholder='Enter name of medicine' onChange={(e) => { setMedicine(e.target.value) }} className="appearance-none bg-transparent border-none w-full text-subtext mr-3 py-1 leading-tight focus:outline-none"/>                   
+      </div>
+        <button type='button' onClick={ getMedicineData } className="text-white bg-btn-left hover:bg-btn-right font-medium rounded-lg px-7 py-2 mx-5 my-20 text-lg border-b-customDark">Submit</button>
       </div>
 
       { data ? (
-        <div className='text-base font-semibold bg-gray-800 text-white mx-auto p-6 w-2/5 rounded-md '>
+        <div className='text-base font-semibold bg-gray-800 text-white mx-auto p-6 w-2/5 rounded-lg '>
           Name: {data.name} <br />
           Generic Name: {data.genericName} <br />
           Manufacturer Name: {data.manufacturerName} <br />

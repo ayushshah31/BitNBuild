@@ -1,0 +1,24 @@
+#ecommerce{
+    padding: 75px;
+    text-align: center;
+}
+.buy{
+    padding: 20px;
+}
+body{
+    font-family: "Montserrat";
+}
+p{
+    color:#8f8f8f;
+}
+.ecomimg{
+    height:300px;
+    width:100%;
+    border-radius: 31px;
+}
+.ownbox{
+    box-shadow: 0px 0px 10px black;
+}
+.headmain{
+    font-family: 'Robota Slab',serif;
+}
