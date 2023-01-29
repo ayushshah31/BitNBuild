@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import DoctorsSidebar from "./DoctorsSidebar";
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { TiTick } from 'react-icons/ti';
 import { RxCross1 } from 'react-icons/rx';
+import { setAppointments, setAppoint } from "../../state/authSlice";
 
 const DoctorsLogs = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [appointment, setAppointment] = useState([]);
   const [accept, setAccept] = useState(false);
@@ -36,9 +38,15 @@ const DoctorsLogs = () => {
         endTime,
         date,
       });
-      console.log(response);
 
       if(response.status === 204) {
+        const time = {
+          startTime,
+          endTime,
+          date,
+        };
+        dispatch(setAppoint(time));
+        dispatch(setAppointments(time));
         window.location.reload();
       }
     } catch (error) {
