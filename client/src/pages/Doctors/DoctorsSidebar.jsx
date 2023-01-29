@@ -1,13 +1,7 @@
 import React from "react";
 import "./Sidebar.css";
 import {Link } from "react-router-dom";
-import {
-  AiOutlineFundProjectionScreen,
-} from "react-icons/ai";
-import { Link } from "react-router-dom";
-import {
-  AiOutlineFundProjectionScreen,
-} from "react-icons/ai";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import DoctorsNavbar from "./DoctorsNavbar";
 import { useSelector } from 'react-redux';
